@@ -1,1 +1,36 @@
-
+public class Q3 
+{
+	public static void main(String[] args) 
+	{
+		// Vérifier qu'un argument a été fourni
+		if (args.length == 0) {
+			System.out.println("Erreur: Veuillez fournir un nombre N en paramètre.");
+			System.out.println("Usage: java Q3 <N>");
+			return;
+		}
+		
+		try {
+			// Convertir l'argument en entier
+			int N = Integer.parseInt(args[0]);
+			
+			// Vérifier que N est positif
+			if (N <= 0) {
+				System.out.println("Erreur: N doit être un nombre positif.");
+				return;
+			}
+			
+			// Afficher la suite de 1 à N sur une ligne
+			for (int i = 1; i <= N; i++) {
+				System.out.print(i);
+				if (i < N) {
+					System.out.print(" ");
+				}
+			}
+			System.out.println(); // Nouvelle ligne à la fin
+			
+		} catch (NumberFormatException e) {
+			System.out.println("Erreur: L'argument doit être un nombre entier.");
+			System.out.println("Usage: java Q3 <N>");
+		}
+	}
+}
