@@ -27,6 +27,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
+          git config pull.rebase false
           git add Q3_archive_java.txt Q3.java
           git commit -m "Q3: Ajout de Q3_archive_java.txt et Q3.java (workflow Q3)" || exit 0
           

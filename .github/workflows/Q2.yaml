@@ -41,6 +41,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
+          git config pull.rebase false
           git add Q2_archive_TOTO.txt
           git commit -m "Q2: Ajout de Q2_archive_TOTO.txt (workflow Q2)" || exit 0
           
