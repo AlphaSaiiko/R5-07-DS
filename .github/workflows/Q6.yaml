@@ -10,6 +10,8 @@ permissions:
 jobs:
   archive-q6-advanced:
     runs-on: ubuntu-latest
+    env:
+      NOM_PRENOM: "AlphaSaiiko"
     steps:
       - name: Checkout du code (avec historique pour diff)
         # depth: 0 est essentiel pour s'assurer que l'historique de tous les fichiers est disponible
