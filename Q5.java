@@ -4,7 +4,7 @@ public class Q5
 	{
 		if(args.length == 0) {
 			System.out.println("Erreur: Veuillez fournir un nombre N en paramètre.");
-			System.out.println("Usage: java Q4 <N>");
+			System.out.println("Usage: java Q5 <N>");
 			return;
 		}
 
@@ -18,8 +18,8 @@ public class Q5
 				return;
 			}
 			
-			// Afficher le triangle de nombres
-			for (int ligne = 1; ligne <= N; ligne++) {
+			// Afficher le triangle inversé de nombres
+			for (int ligne = N; ligne >= 1; ligne--) {
 				for (int nombre = 1; nombre <= ligne; nombre++) {
 					System.out.print(nombre);
 					if (nombre < ligne) {
@@ -31,7 +31,7 @@ public class Q5
 			
 		} catch (NumberFormatException e) {
 			System.out.println("Erreur: L'argument doit être un nombre entier.");
-			System.out.println("Usage: java Q4 <N>");
+			System.out.println("Usage: java Q5 <N>");
 		}
 	}
 }
