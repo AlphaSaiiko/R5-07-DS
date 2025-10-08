@@ -24,5 +24,10 @@ jobs:
           git config --local user.name "GitHub Action"
           git add Q1_archive_TOTO.txt
           git commit -m "Q1: Ajout de Q1_archive_TOTO.txt (workflow Q1)" || exit 0
-          git pull --rebase origin main || true
-          git push origin main
+          
+          # Boucle de retry pour gérer les conflits de concurrence
+          for i in {1..5}; do
+            git pull --no-edit origin main && git push origin main && break
+            echo "Tentative $i échouée, retry dans 5 secondes..."
+            sleep 5
+          done

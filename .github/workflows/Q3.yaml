@@ -29,5 +29,10 @@ jobs:
           git config --local user.name "GitHub Action"
           git add Q3_archive_java.txt Q3.java
           git commit -m "Q3: Ajout de Q3_archive_java.txt et Q3.java (workflow Q3)" || exit 0
-          git pull --rebase origin main || true
-          git push origin main
+          
+          # Boucle de retry pour gérer les conflits de concurrence
+          for i in {1..5}; do
+            git pull --no-edit origin main && git push origin main && break
+            echo "Tentative $i échouée, retry dans 5 secondes..."
+            sleep 5
+          done
