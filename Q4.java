@@ -32,27 +32,6 @@ public class Q4
 		} catch (NumberFormatException e) {
 			System.out.println("Erreur: L'argument doit être un nombre entier.");
 			System.out.println("Usage: java Q4 <N>");
-		} {
-			int N = Integer.parseInt(args[0]);
-			
-			if (N <= 0) {
-				System.out.println("Erreur: N doit être un nombre positif.");
-				return;
-			}
-			
-			for (int i = 1; i <= N; i++) {
-				for (int j = 1; j <= i; j++) {
-					System.out.print(j);
-					if (j < i) {
-						System.out.print(" ");
-					}
-				}
-				System.out.println(); // Nouvelle ligne après chaque ligne de la pyramide
-			}
-			
-		} catch (NumberFormatException e) {
-			System.out.println("Erreur: L'argument doit être un nombre entier.");
-			System.out.println("Usage: java Q4 <N>");
 		}
 	}
 }
