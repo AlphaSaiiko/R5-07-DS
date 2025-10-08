@@ -18,10 +18,10 @@ public class Q5
 				return;
 			}
 			
-			// Afficher le triangle inversé de nombres
+			// Afficher le triangle inversé avec des 'x'
 			for (int ligne = N; ligne >= 1; ligne--) {
 				for (int nombre = 1; nombre <= ligne; nombre++) {
-					System.out.print(nombre);
+					System.out.print("x");
 					if (nombre < ligne) {
 						System.out.print(" ");
 					}
