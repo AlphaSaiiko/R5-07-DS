@@ -24,9 +24,10 @@ jobs:
           cat Q3.java >> Q3_archive_java.txt
 
       - name: Pousser le fichier archivé
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: 'Q3: Ajout de Q3_archive_java.txt et Q3.java (workflow Q3)'
-          file_pattern: |
-            Q3_archive_java.txt
-            Q3.java # Assure que le fichier source Q3.java est aussi commit
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add Q3_archive_java.txt Q3.java
+          git commit -m "Q3: Ajout de Q3_archive_java.txt et Q3.java (workflow Q3)" || exit 0
+          git pull --rebase origin main || true
+          git push origin main

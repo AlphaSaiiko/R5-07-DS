@@ -59,11 +59,11 @@ jobs:
           fi
 
       - name: Pousser les fichiers (archive et différences)
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: 'Q6: Ajout de la nouvelle archive et du fichier de différences (workflow Q6)'
-          # Les deux fichiers sont ajoutés: le nouveau daté et le fichier de différences
-          file_pattern: |
-            Q6_archive_*.txt
-            Q6_differences.txt
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add Q6_archive_*.txt Q6_differences.txt
+          git commit -m "Q6: Ajout de la nouvelle archive et du fichier de différences (workflow Q6)" || exit 0
+          git pull --rebase origin main || true
+          git push origin main
             Q6.java # Assure que le fichier source Q6.java est à jour

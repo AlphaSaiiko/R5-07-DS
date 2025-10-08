@@ -38,7 +38,10 @@ jobs:
           echo "Taille de TOTO.txt : ${{ steps.info_collector.outputs.toto_size }}" >> Q2_archive_TOTO.txt
 
       - name: Pousser le fichier archivé
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: 'Q2: Ajout de Q2_archive_TOTO.txt (workflow Q2)'
-          file_pattern: Q2_archive_TOTO.txt
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add Q2_archive_TOTO.txt
+          git commit -m "Q2: Ajout de Q2_archive_TOTO.txt (workflow Q2)" || exit 0
+          git pull --rebase origin main || true
+          git push origin main

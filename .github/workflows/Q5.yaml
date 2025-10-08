@@ -32,9 +32,10 @@ jobs:
           cat Q5.java >> ${{ steps.set_filename.outputs.ARCHIVE_FILE }}
 
       - name: ⬆️ Pousser le fichier archivé
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: 'Q5: Ajout de Q5_archive_date.txt (workflow Q5)'
-          file_pattern: |
-            Q5_archive_*.txt
-            Q5.java # Assure que le fichier source Q5.java est à jour
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add Q5_archive_*.txt Q5.java
+          git commit -m "Q5: Ajout de Q5_archive_date.txt (workflow Q5)" || exit 0
+          git pull --rebase origin main || true
+          git push origin main

@@ -32,7 +32,10 @@ jobs:
           cat Q4.java >> ${{ steps.set_filename.outputs.ARCHIVE_FILE }}
 
       - name: ⬆️ Pousser le fichier archivé
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: 'Q4: Ajout de Q4_archive_date.txt (workflow Q4)'
-          file_pattern: Q4_archive_*.txt
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add Q4_archive_*.txt
+          git commit -m "Q4: Ajout de Q4_archive_date.txt (workflow Q4)" || exit 0
+          git pull --rebase origin main || true
+          git push origin main
