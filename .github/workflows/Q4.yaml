@@ -1,0 +1,33 @@
+name: Q4 - Archive Q4.java Datée (JJ-MM-AAAA)
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  archive-q4-dated:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⬇️ Checkout du code
+        uses: actions/checkout@v4
+
+      - name: 📅 Définir le nom de fichier daté
+        id: set_filename
+        run: |
+          # Format de la date : JJ-MM-AAAA
+          DATE_FORMATTEE=$(date +'%d-%m-%Y')
+          ARCHIVE_FILE="Q4_archive_${DATE_FORMATTEE}.txt"
+          echo "ARCHIVE_FILE=$ARCHIVE_FILE" >> $GITHUB_OUTPUT
+
+      - name: 📝 Créer le fichier d'archive
+        run: |
+          echo "Archive créée par : $NOM_PRENOM" > ${{ steps.set_filename.outputs.ARCHIVE_FILE }}
+          echo "-----------------------------------" >> ${{ steps.set_filename.outputs.ARCHIVE_FILE }}
+          echo "Contenu de Q4.java :" >> ${{ steps.set_filename.outputs.ARCHIVE_FILE }}
+          cat Q4.java >> ${{ steps.set_filename.outputs.ARCHIVE_FILE }}
+
+      - name: ⬆️ Pousser le fichier archivé
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'Q4: Ajout de Q4_archive_date.txt (workflow Q4)'
+          file_pattern: Q4_archive_*.txt
