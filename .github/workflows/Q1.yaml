@@ -8,15 +8,14 @@ jobs:
   archive-toto:
     runs-on: ubuntu-latest
     steps:
-      - name: ⬇️ Checkout du code
+      - name: Checkout du code
         uses: actions/checkout@v4
 
-      - name: 📝 Créer Q1_archive_TOTO.txt
+      - name: Créer Q1_archive_TOTO.txt
         run: |
-          # Recopie le contenu de TOTO.txt dans le nouveau fichier
           cat TOTO.txt > Q1_archive_TOTO.txt
 
-      - name: ⬆️ Pousser le fichier archivé
+      - name: Pousser le fichier archivé
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'Q1: Ajout de Q1_archive_TOTO.txt (workflow Q1)'

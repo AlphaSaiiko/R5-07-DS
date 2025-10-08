@@ -8,21 +8,21 @@ jobs:
   archive-enhanced:
     runs-on: ubuntu-latest
     steps:
-      - name: ⬇️ Checkout du code
+      - name: Checkout du code
         uses: actions/checkout@v4
 
-      - name: 📐 Collecter les informations
+      - name: Collecter les informations
         id: info_collector
         run: |
-          # Date et heure d'exécution
+          
           DATE_TIME=$(date +'%Y-%m-%d %H:%M:%S')
           echo "date_time=$DATE_TIME" >> $GITHUB_OUTPUT
           
-          # Taille de TOTO.txt en octets (wc -c)
+          
           TOTO_SIZE=$(wc -c < TOTO.txt | awk '{print $1}')
           echo "toto_size=$TOTO_SIZE octets" >> $GITHUB_OUTPUT
 
-      - name: 📝 Créer Q2_archive_TOTO.txt
+      - name: Créer Q2_archive_TOTO.txt
         run: |
           echo "Archive créée par : $NOM_PRENOM" > Q2_archive_TOTO.txt
           echo "Date et heure d'exécution : ${{ steps.info_collector.outputs.date_time }}" >> Q2_archive_TOTO.txt
@@ -32,7 +32,7 @@ jobs:
           echo "-----------------------------------" >> Q2_archive_TOTO.txt
           echo "Taille de TOTO.txt : ${{ steps.info_collector.outputs.toto_size }}" >> Q2_archive_TOTO.txt
 
-      - name: ⬆️ Pousser le fichier archivé
+      - name: Pousser le fichier archivé
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'Q2: Ajout de Q2_archive_TOTO.txt (workflow Q2)'

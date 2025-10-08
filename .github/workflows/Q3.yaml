@@ -8,17 +8,17 @@ jobs:
   archive-q3:
     runs-on: ubuntu-latest
     steps:
-      - name: ⬇️ Checkout du code
+      - name: Checkout du code
         uses: actions/checkout@v4
 
-      - name: 📝 Créer Q3_archive_java.txt
+      - name: Créer Q3_archive_java.txt
         run: |
           echo "Archive créée par : $NOM_PRENOM" > Q3_archive_java.txt
           echo "-----------------------------------" >> Q3_archive_java.txt
           echo "Contenu de Q3.java :" >> Q3_archive_java.txt
           cat Q3.java >> Q3_archive_java.txt
 
-      - name: ⬆️ Pousser le fichier archivé
+      - name: Pousser le fichier archivé
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'Q3: Ajout de Q3_archive_java.txt et Q3.java (workflow Q3)'
